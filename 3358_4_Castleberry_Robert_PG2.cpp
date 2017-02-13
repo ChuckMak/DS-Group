@@ -213,7 +213,7 @@ void calc(const vector<vector<int> > &matrix)
 void setVals(vector<vector<int> > &matrix)
 {
     int temp;  //For storing a random int
-    bool distinct = false;  //For indicating whether temp has been assigned
+    bool distinct;  //For indicating whether temp has been assigned
 
     //Outer for loops increment through the vector for value assignment
     for (int i = 0; i < matrix.size(); i++)
@@ -223,6 +223,7 @@ void setVals(vector<vector<int> > &matrix)
             //Do-while for generating random ints until a distinct one is found
             do
             {
+                distinct = false;
                 temp = rand() % 150;  //Limits range and generates random nums
                 
                 //Inner for loops increment through elements already assigned
