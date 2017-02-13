@@ -30,6 +30,8 @@ int main()
     vector<int> nums;
     vector<vector<int> > matrix;
     
+    srand(time(NULL));
+    
     //Displays the welcome message, formatted to match instructor line breaks
     //and indentation (\t was too many spaces!)
     cout << "Welcome to my perfect matrix program. The function of the program";
@@ -61,7 +63,7 @@ int main()
         }
         else if (size >= MIN_SIZE)
         {
-            nums.reserve(size);
+            nums.assign(size, 0);
             matrix.assign(size, nums);
             setVals(matrix);
             calc(matrix);
@@ -106,15 +108,18 @@ int main()
 
 //Function definitions
 
-//Definition of calc function
+//Definition of calc function. Calculates relevant sums then stores them for
+//processing and display
 void calc(const vector<vector<int> > &matrix)
 {
-    const int SUMS_SIZE = 2;
-    int sumTotal = 0;
-    int sumD1 = 0;
-    int sumD2 = 0;
-    vector<int> v1(matrix.size()); 
-    vector<vector<int> > sums(SUMS_SIZE, v1);
+    const int SUMS_SIZE = 2;  //A vector of row sums and a vector of col sums
+    int sumTotal = 0;  //For calculating the property number
+    
+    int sumD1 = 0;  //Any size vector still
+    int sumD2 = 0;  //has only two diagonals
+    
+    vector<int> v1(matrix.size());  //Holds sums
+    vector<vector<int> > sums(SUMS_SIZE, v1);  //Holds vectors of row/col sums
 
     //Sums all elements
     for (int i = 0; i < matrix.size(); i++)
@@ -159,18 +164,18 @@ void calc(const vector<vector<int> > &matrix)
     //Sums the first diagonal
     for (int i = 0; i < matrix.size(); i++)
     {
-        int j = i;
+        int j = i;  //Explicit for clarity
         sumD1 += matrix[i][j];
     }
 
     //Sums the second diagonal
     for (int i = 0; i < matrix.size(); i++)
     {
-        int j = matrix.size() - i;
+        int j = matrix.size() - i;  //Explicit for clarity
         sumD2 += matrix[i][j];
     }
 
-    //Displays output
+    //Displays output to match instructor format
     cout << "\nThe perfect number is: " << sumTotal/3 << "\n";
     for (int i = 0; i < matrix.size(); i++)
     {
@@ -187,6 +192,8 @@ void calc(const vector<vector<int> > &matrix)
     cout << right << setw(10) << sumD1 << "\n";
     cout << "Sum of numbers in second diagonal    =";
     cout << right << setw(10) << sumD2 << "\n";
+    
+    //Tests matrix and displays whether it is perfect.
     if ((sumTotal % 3))
     {
         cout << "\nThe above is not a perfect matrix.\n";
@@ -202,24 +209,24 @@ void calc(const vector<vector<int> > &matrix)
 
 }
 
-//Definition of setVals
+//Definition of setVals. Populates the 2D vector with distinct random ints
 void setVals(vector<vector<int> > &matrix)
 {
-    unsigned int seed = time(0);
-    srand(seed);
+    int temp;  //For storing a random int
+    bool distinct = false;  //For indicating whether temp has been assigned
 
-
+    //Outer for loops increment through the vector for value assignment
     for (int i = 0; i < matrix.size(); i++)
     {
         for (int j = 0; j < matrix[i].size(); j++)
         {
-            int temp;
-            bool distinct = false;
-            
+            //Do-while for generating random ints until a distinct one is found
             do
             {
-                temp = rand();
+                temp = rand() % 150;  //Limits range and generates random nums
                 
+                //Inner for loops increment through elements already assigned
+                //a value and checks for duplicate temp value
                 for (int m = 0; m <= i; m++)
                 {
                     for (int n = 0; n < j; n++)
@@ -245,8 +252,10 @@ void setVals(vector<vector<int> > &matrix)
                     }
                 }
             } while (distinct == false);
-        
+            
+            //If a distinct random int is generated and verified, it is assigned
             matrix[i][j] = temp;
         }
     }
 }
+
