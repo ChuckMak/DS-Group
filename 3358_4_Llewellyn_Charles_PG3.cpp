@@ -27,9 +27,9 @@ int main ()
 	menu();
 	cout << "Enter your choice -----> ";
 	cin >>
-	switch (choice)		//puts the copied digit into a switch statement
+	switch (choice)		
 		{
-            case 1:			//and outputs the number and the english name
+            case 1:			
             	{		
             		
 				}
