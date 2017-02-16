@@ -8,6 +8,9 @@
 //	Header file for averaging user-inputted grades
 
 #include <vector>
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
 
 
 #ifndef DLIST
@@ -28,10 +31,146 @@ class Grades
 		void getAverage();	//shows overall average
 
 	private:
-		std::vector<double> quiz;	//stores quiz grades in a vector
-		std::vector<double> PA;		//stroes assignment grades in a vector
-		std::vector<double> test;	//stores test grades in a vector
-		double quizAvg, assignmentAvg, testAvg; 	//stores averages of " "
+		std::vector<double> quiz;
+		std::vector<double> PA;
+		std::vector<double> test;
+		double quizAvg, assignmentAvg, testAvg; 	
 };
 
+Grades::Grades()
+{
+	this->quiz.assign(0,0.0);
+	this->test.assign(0,0.0);
+	this->PA.assign(0,0.0);
+	quizAvg = 0;
+	assignmentAvg = 0;
+	testAvg = 0;
+	
+}
+
+void Grades::setQuizGrade(double grade)
+{
+	quiz.push_back(grade);
+}
+
+void Grades::setPAGrade(double grade)
+{
+	PA.push_back(grade);
+}
+
+void Grades::setTestGrade(double grade)
+{
+	if ( test.size() < 3)
+		test.push_back(grade);
+	else
+		std::cout << "Error! Max number of tests reached \n";
+}
+
+void Grades::getQuizGrade()
+{
+	if (quiz.empty())
+		std::cout << "No Quizzes are recorded\n";
+	else
+	{
+		std::cout << "Quiz grades are as follows: /n";
+		for (size_t n = 0; n < quiz.size(); n++)
+		{
+			std::cout << quiz[n] << "\t";
+			quizAvg += quiz[n];
+		}
+
+		std::cout << std::setprecision(2) << std::fixed << "Quiz Average: " << quizAvg;
+		std::cout <<"out of " << quiz.size() * 10 << std::endl;
+	}
+}
+
+void Grades::getPAGrade()
+{
+	if (PA.empty())
+		std::cout << "No Assignments are recorded\n";
+	else
+	{
+		std::cout << "Assignment grades are as follows: /n";
+		for (size_t n = 0; n < PA.size(); n++)
+		{
+			std::cout << PA[n] << "\t";
+			assignmentAvg += PA[n];
+		}
+
+		std::cout << std::setprecision(2) << std::fixed << "Assignment Average: " << assignmentAvg;
+		std::cout <<"out of " << PA.size() * 20 << std::endl;
+	}
+}
+
+void Grades::getTestGrade()
+{
+	if (test.empty())
+		std::cout << "No tets are recorded\n";
+	else
+	{
+		std::cout << "Test grades are as follows: /n";
+		for (size_t n = 0; n < test.size(); n++)
+		{
+			std::cout << test[n] << "\t";
+			testAvg += test[n];
+		}
+
+		std::cout << std::setprecision(2) << std::fixed << "Test Average: " << testAvg;
+		std::cout <<"out of " << test.size() * 20 << std::endl;
+	}
+}
+
+void Grades::getAverage()
+{
+	std::cout << "Your Overall Average: \n";
+	getQuizGrade();
+	getPAGrade();
+	getTestGrade();
+}
 #endif		
+		
+		
+		
+	
+	
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+
