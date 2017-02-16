@@ -20,7 +20,7 @@ class Grades
 		Grades ();	//Constructor
 		//getters/setters
 		void setQuizGrade(double);	//sets the Quiz grades (MAX = )
-		void setPAGrade(double);	//sets the Programming Assignment Grades (Max = )
+		void setPAGrade(double);	//sets the Programming Assignment Grades (Max = 8)
 		void setTestGrade(double);	//sets the Test grades (MAX = 2)
 		void getQuizGrade();	//shows the quiz grades and calculates an average
 		void getPAGrade();	//shows the grades of program assignments and calculates an average
@@ -28,10 +28,10 @@ class Grades
 		void getAverage();	//shows overall average
 
 	private:
-		std::vector<double> quiz;
-		std::vector<double> PA;
-		std::vector<double> test;
-		double quizAvg, assignmentAvg, testAvg; 	
+		std::vector<double> quiz;	//stores quiz grades in a vector
+		std::vector<double> PA;		//stroes assignment grades in a vector
+		std::vector<double> test;	//stores test grades in a vector
+		double quizAvg, assignmentAvg, testAvg; 	//stores averages of " "
 };
 
 #endif		
