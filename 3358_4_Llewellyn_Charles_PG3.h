@@ -63,16 +63,16 @@ void Grades::setTestGrade(double grade)
 	if ( test.size() < 3)
 		test.push_back(grade);
 	else
-		std::cout << "Error! Max number of tests reached \n";
+		std::cout << "\nError! Max number of tests reached \n";
 }
 
 void Grades::getQuizGrade()
 {
 	if (quiz.empty())
-		std::cout << "No Quizzes are recorded\n";
+		std::cout << "\nNo Quizzes are recorded\n";
 	else
 	{
-		std::cout << "Quiz grades are as follows: /n";
+		std::cout << "\nQuiz grades are as follows: \n";
 		for (size_t n = 0; n < quiz.size(); n++)
 		{
 			std::cout << quiz[n] << "\t";
@@ -87,10 +87,10 @@ void Grades::getQuizGrade()
 void Grades::getPAGrade()
 {
 	if (PA.empty())
-		std::cout << "No Assignments are recorded\n";
+		std::cout << "\nNo Assignments are recorded\n";
 	else
 	{
-		std::cout << "Assignment grades are as follows: /n";
+		std::cout << "\nAssignment grades are as follows: \n";
 		for (size_t n = 0; n < PA.size(); n++)
 		{
 			std::cout << PA[n] << "\t";
@@ -105,10 +105,10 @@ void Grades::getPAGrade()
 void Grades::getTestGrade()
 {
 	if (test.empty())
-		std::cout << "No tets are recorded\n";
+		std::cout << "\nNo tests are recorded\n";
 	else
 	{
-		std::cout << "Test grades are as follows: /n";
+		std::cout << "Test grades are as follows: \n";
 		for (size_t n = 0; n < test.size(); n++)
 		{
 			std::cout << test[n] << "\t";
@@ -122,7 +122,7 @@ void Grades::getTestGrade()
 
 void Grades::getAverage()
 {
-	std::cout << "Your Overall Average: \n";
+	std::cout << "\nYour Overall Average: \n";
 	getQuizGrade();
 	getPAGrade();
 	getTestGrade();

@@ -20,6 +20,7 @@ void menu ();
 
 int main ()
 {
+	Grades grades;
 	int choice;
 	double input;
 	
@@ -43,19 +44,38 @@ int main ()
 			switch (choice)		
 			{
 	            case 1:
-	            	cout << "XXXX\n";
+	            	cout << "\nSet a Quiz Grade.\n";
+	            	cout << "\nEnter Quiz Grade: ";
+	            	cin >> input;
+	            	grades.setQuizGrade(input);
 	            	break;		    
 				case 2:	
+					cout << "\nSet a Program Assignment Grade.\n";
+					cout << "\nEnter Program Assignment Grade: ";
+	            	cin >> input;
+	            	grades.setPAGrade(input);
 	                break;
 	            case 3:
+	            	cout << "\nSet a Test Grade.\n";
+	            	cout << "\nEnter Test Grade: ";
+	            	cin >> input;
+	            	grades.setTestGrade(input);
 	                break;
 	            case 4:	
+	            	cout << "\nShow All Quiz Grades.\n";
+	            	grades.getQuizGrade();
 	                break;
 	            case 5:	
+	            	cout <<"\nShow All Programming Assignment Grades.\n";
+	            	grades.getPAGrade();
 	                break;
 	            case 6:
+	            	cout <<"\nShow All Test Grades.\n";
+	            	grades.getTestGrade();
 	                break;
 	            case 7:		
+	            	cout <<"\nShow Overall Grades.\n";
+	            	grades.getAverage();
 	                break;
 				case 9:
 					break;
@@ -71,7 +91,7 @@ int main ()
 
 void menu ()
 {
-	cout << "1. Set a Quiz Grade\n2. Set a Programming Assignment Grade\n3. Set a Test Grade\n";
+	cout << "\n1. Set a Quiz Grade\n2. Set a Programming Assignment Grade\n3. Set a Test Grade\n";
 	cout << "4. Show All Quiz Grades\n5. Show All Assignment Grades\n6. Show all Test Grades\n7. Show Overall Grades\n";
 	cout << "9. Terminate program\n";
 }
