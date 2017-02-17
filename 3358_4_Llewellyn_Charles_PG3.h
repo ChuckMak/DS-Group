@@ -80,7 +80,7 @@ void Grades::getQuizGrade()
 		}
 
 		std::cout << std::setprecision(2) << std::fixed << "Quiz Average: " << quizAvg;
-		std::cout <<"out of " << quiz.size() * 10 << std::endl;
+		std::cout <<" out of " << quiz.size() * 10 << std::endl;
 	}
 }
 
@@ -98,7 +98,7 @@ void Grades::getPAGrade()
 		}
 
 		std::cout << std::setprecision(2) << std::fixed << "Assignment Average: " << assignmentAvg;
-		std::cout <<"out of " << PA.size() * 20 << std::endl;
+		std::cout <<" out of " << PA.size() * 20 << std::endl;
 	}
 }
 
@@ -108,7 +108,7 @@ void Grades::getTestGrade()
 		std::cout << "\nNo tests are recorded\n";
 	else
 	{
-		std::cout << "Test grades are as follows: \n";
+		std::cout << "\nTest grades are as follows: \n";
 		for (size_t n = 0; n < test.size(); n++)
 		{
 			std::cout << test[n] << "\t";
@@ -116,7 +116,7 @@ void Grades::getTestGrade()
 		}
 
 		std::cout << std::setprecision(2) << std::fixed << "Test Average: " << testAvg;
-		std::cout <<"out of " << test.size() * 20 << std::endl;
+		std::cout <<" out of " << test.size() * 20 << std::endl;
 	}
 }
 
